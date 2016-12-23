@@ -7,21 +7,18 @@ var ctrlEntradas = require('../controllers/entradas');
 //módulos básicos para un blog
 
 //Usuarios
-router.get('/usuarios',                 ctrlUsuarios.usuariosList);
 router.post('/usuarios',                ctrlUsuarios.usuariosCreate);
 router.get('/usuarios/:usuario_id',     ctrlUsuarios.usuariosRead);
 router.put('/usuarios/:usuario_id',     ctrlUsuarios.usuariosUpdate);
 router.delete('/usuarios/:usuario_id',  ctrlUsuarios.usuariosDelete);
 
 //Entradas
-router.get('/entradas',                  ctrlEventos.eventosList);
-router.post('/entradas',                 ctrlEventos.eventosCreate);
-router.get('/entradas/:evento_id',       ctrlEventos.eventosRead);
-router.put('/entradas/:evento_id',       ctrlEventos.eventosUpdate);
-router.delete('/entradas/:evento_id',    ctrlEventos.eventosDelete);
+router.post('/entradas',                 ctrlEntradas.entradasCreate);
+router.get('/entradas/:evento_id',       ctrlEntradas.entradasRead);
+router.put('/entradas/:evento_id',       ctrlEntradas.entradasUpdate);
+router.delete('/entradas/:evento_id',    ctrlEntradas.entradasDelete);
 
 //Comentarios
-router.get('/comentarios',                      ctrlComentarios.comentariosList);
 router.post('/comentarios',                     ctrlComentarios.comentariosCreate);
 router.get('/comentarios/:comentario_id',       ctrlComentarios.comentariosRead);
 router.put('/comentarios/:comentario_id',       ctrlComentarios.comentariosUpdate);
