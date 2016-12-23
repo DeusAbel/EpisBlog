@@ -14,9 +14,9 @@ router.delete('/usuarios/:usuario_id',  ctrlUsuarios.usuariosDelete);
 
 //Entradas
 router.post('/entradas',                 ctrlEntradas.entradasCreate);
-router.get('/entradas/:evento_id',       ctrlEntradas.entradasRead);
-router.put('/entradas/:evento_id',       ctrlEntradas.entradasUpdate);
-router.delete('/entradas/:evento_id',    ctrlEntradas.entradasDelete);
+router.get('/entradas/:entrada_id',       ctrlEntradas.entradasRead);
+router.put('/entradas/:entrada_id',       ctrlEntradas.entradasUpdate);
+router.delete('/entradas/:entrada_id',    ctrlEntradas.entradasDelete);
 
 //Comentarios
 router.post('/comentarios',                     ctrlComentarios.comentariosCreate);
