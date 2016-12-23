@@ -4,7 +4,7 @@
     .module('EpisBlog')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$scope', 'EpisBlog', 'geolocation'];
+  homeCtrl.$inject = ['$scope', 'EpisBlog'];
   function homeCtrl ($scope, loc8rData, geolocation) {
     var vm = this;
     vm.pageHeader = {
