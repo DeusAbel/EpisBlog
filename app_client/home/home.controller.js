@@ -5,7 +5,7 @@
     .controller('homeCtrl', homeCtrl);
 
   homeCtrl.$inject = ['$scope', 'EpisBlog'];
-  function homeCtrl ($scope, loc8rData, geolocation) {
+  function homeCtrl ($scope, EpisBlog) {
     var vm = this;
     vm.pageHeader = {
       title: 'EpisBlog',
