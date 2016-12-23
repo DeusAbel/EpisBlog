@@ -58,10 +58,10 @@ module.exports.usuariosUpdate = function(req, res){
   }
   tusuarios
     .findById(req.params.usuario_id)    
-    .select('-correo -flag')
+    .select('-correo')
     .exec(      
       function(err, usuario){        
-        if (!usuario || usuario.flag == "E"){                    
+        if (!usuario){                    
           sendJSONresponse(res, 404, {
             "Mensaje": "Id de usuario no encontrado"
           });
@@ -72,8 +72,7 @@ module.exports.usuariosUpdate = function(req, res){
         }
 
         usuario.nombre =    req.body.nombre;
-        usuario.password =  req.body.password;
-        usuario.sexo =      req.body.sexo;
+        usuario.password =  req.body.password;        
         
         usuario.save(function(err, usuario){
           if (err){            
