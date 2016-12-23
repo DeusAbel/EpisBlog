@@ -6,20 +6,14 @@ var sendJSONresponse = function(res, status, content) {
   res.json(content);
 };
 
-
-
-//  console("esto se insertara: "+req.params.usuario+" "+req.query.email+" "+req.body.password);  
-
 //Insertar Usuario
 module.exports.usuariosCreate = function(req, res){
-  //console.log(req.body.nombre+ "/"+ req.body.correo+"/"+req.body.password);  
+  
   tusuarios.create(
     {
       nombre:   req.body.nombre,        
       correo:   req.body.correo,
-      password: req.body.password,
-      sexo:     req.body.sexo,
-      flag:     'A'
+      password: req.body.password,      
     }, function(err, usuario){
       if (err){
         sendJSONresponse(res, 400, err);
@@ -30,30 +24,13 @@ module.exports.usuariosCreate = function(req, res){
   )
 };
 
-//Listar Usuarios
-module.exports.usuariosList = function(req, res){
-  console.log("Listando");
-  if(req.params){
-    tusuarios
-      .find({flag:"A"}, function(err, usuarios){
-        var usuarioMap = {};
-        usuarios.forEach(function(usuario){
-          usuarioMap[usuario._id] = usuario;
-          console.log("Usuario:" +  usuario);
-        });        
-        sendJSONresponse(res, 201, usuarios);
-      });
-  }  
-};
-
 //Leer Usuario
 module.exports.usuariosRead = function(req, res){
-  if (req.params && req.params.usuario_id){
-    console.log("codigo de usuario: " + req.params.usuario_id);
+  if (req.params && req.params.usuario_id){    
     tusuarios
       .findById(req.params.usuario_id)
       .exec(function(err, usuario){
-        if(!usuario || usuario.flag == "E"){
+        if(!usuario){
           sendJSONresponse(res, 404, {
             "mensaje": "Usuario no encontrado" 
           });
@@ -73,9 +50,7 @@ module.exports.usuariosRead = function(req, res){
 
 //Modificar Usuario 
 module.exports.usuariosUpdate = function(req, res){
-  console.log("API UPDATE: " + req.params.usuario_id);
   if (!req.params.usuario_id){
-    console.log("NO HAY:  " + req.params.usuario_id);
     sendJSONresponse(res404, {
       "Mensaje": "No encontrado, usuario_id requerido"
     });
@@ -92,19 +67,16 @@ module.exports.usuariosUpdate = function(req, res){
           });
           return;
         } else if (err){
-          console.log("ERROR AQUI : " + err);
           sendJSONresponse(res, 404,err);
           return;          
         }
 
-        
         usuario.nombre =    req.body.nombre;
         usuario.password =  req.body.password;
         usuario.sexo =      req.body.sexo;
         
         usuario.save(function(err, usuario){
-          if (err){
-            console.log("ERROR AQUI : " + err);
+          if (err){            
             sendJSONresponse (res, 404, err);
           } else {            
             sendJSONresponse(res,200, usuario);
@@ -135,9 +107,7 @@ module.exports.usuariosDelete = function(req, res){
         } else if (err){
           sendJSONresponse(res, 404,err);
           return;          
-        }
-        usuario.flag =  "E";
-        console.log("holasss " + usuario);
+        }        
         usuario.save(function(err, usuario){
           if (err){            
                         
