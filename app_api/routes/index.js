@@ -4,6 +4,8 @@ var ctrlUsuarios = require('../controllers/usuarios');
 var ctrlComentarios = require('../controllers/comentarios');
 var ctrlEntradas = require('../controllers/entradas');    
 
+//módulos básicos para un blog
+
 //Usuarios
 router.get('/usuarios',                 ctrlUsuarios.usuariosList);
 router.post('/usuarios',                ctrlUsuarios.usuariosCreate);
