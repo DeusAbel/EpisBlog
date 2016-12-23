@@ -21,3 +21,10 @@ var comentarioSchema = new Schema({
   fecha:        {type: Date,    required: true},    
 });
 
+var usuario       = mongoose.model('Usuario', usuarioSchema);
+var entrada       = mongoose.model('Entrada', entradaSchema);
+var comentario    = mongoose.model('Comentario', comentarioSchema);
+
+module.exports = usuario;
+module.exports = entrada;
+module.exports = comentario;
